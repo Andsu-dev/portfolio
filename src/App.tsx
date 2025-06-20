@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Linkedin, Menu, X } from "lucide-react";
+import { Github, Linkedin, Menu, X } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
 import ContactForm from "./components/ContactForm";
@@ -189,6 +189,15 @@ export default function App() {
                 className="text-neutral-400 flex gap-2 items-center hover:text-white underline"
               >
                 LinkedIn <Linkedin size={20} />
+              </a>
+              or
+              <a
+                href="https://github.com/Andsu-dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-400 flex gap-2 items-center hover:text-white underline"
+              >
+                Github <Github size={20} />
               </a>
               .
             </p>
