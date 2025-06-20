@@ -2,7 +2,7 @@ import type { Skill } from "@/interfaces/skill.interface";
 
 export const skillsData: { category: string; items: Skill[] }[] = [
   {
-    category: "Backend & Dados",
+    category: "Backend & Data",
     items: [
       { name: "Java / Spring Boot" },
       { name: "Node.js / TypeScript" },
@@ -25,7 +25,7 @@ export const skillsData: { category: string; items: Skill[] }[] = [
     ],
   },
   {
-    category: "IA & Automação",
+    category: "AI & Automation",
     items: [
       { name: "OpenAI API" },
       { name: "LangChain" },
