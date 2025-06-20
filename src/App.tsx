@@ -7,7 +7,7 @@ import { useState } from "react";
 import InteractiveParticleNetwork from "./components/interactive-particle-network";
 import LinkedInPostCard from "./components/LinkedinPostCard";
 import { Logo } from "./components/logo";
-import ProjectCardMinimal from "./components/ProjectCard";
+import ProjectCard from "./components/ProjectCard";
 import SectionWrapper from "./components/SectionWrapper";
 import SkillItem from "./components/SkillsItem";
 import { Button } from "./components/ui/button";
@@ -147,7 +147,7 @@ export default function App() {
         <SectionWrapper id="projects" title="projetos_selecionados">
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projectsData.map((project, i) => (
-              <ProjectCardMinimal {...project} key={project.title + i} />
+              <ProjectCard comingSoon {...project} key={project.title + i} />
             ))}
           </div>
         </SectionWrapper>

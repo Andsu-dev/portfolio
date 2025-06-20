@@ -8,18 +8,20 @@ type ProjectProps = {
   liveUrl?: string;
   repoUrl?: string;
   imageUrl?: string;
+  comingSoon?: boolean;
 };
 
-const ProjectCardMinimal = ({
+const ProjectCard = ({
   title,
   description,
   tags,
   liveUrl,
   repoUrl,
   imageUrl,
+  comingSoon = false,
 }: ProjectProps) => (
   <motion.div
-    className="bg-neutral-900 border border-neutral-800 rounded-md p-6 group hover:border-neutral-600 transition-colors duration-300 flex flex-col"
+    className="bg-neutral-900 border border-neutral-800 rounded-md p-6 group hover:border-neutral-600 transition-colors duration-300 flex flex-col relative overflow-hidden"
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.2 }}
@@ -51,7 +53,7 @@ const ProjectCardMinimal = ({
       ))}
     </div>
     <div className="flex space-x-3 mt-auto pt-3 border-t border-neutral-800">
-      {liveUrl && (
+      {liveUrl && !comingSoon && (
         <a
           href={liveUrl}
           target="_blank"
@@ -61,7 +63,7 @@ const ProjectCardMinimal = ({
           Ver Demo <ExternalLink className="ml-1 h-3 w-3" />
         </a>
       )}
-      {repoUrl && (
+      {repoUrl && !comingSoon && (
         <a
           href={repoUrl}
           target="_blank"
@@ -72,7 +74,14 @@ const ProjectCardMinimal = ({
         </a>
       )}
     </div>
+    {comingSoon && (
+      <div className="absolute w-full inset-0 flex items-center justify-center bg-black/60 backdrop-blur-[4px] z-10">
+        <div className="bg-white border border-neutral-700 rounded-lg px-10 py-3 text-center shadow-lg">
+          <span className="text-black text-lg font-bold">Coming Soon</span>
+        </div>
+      </div>
+    )}
   </motion.div>
 );
 
-export default ProjectCardMinimal;
+export default ProjectCard;
