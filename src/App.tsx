@@ -1,18 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Menu, X } from "lucide-react";
+import { Linkedin, Menu, X } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
+import ContactForm from "./components/ContactForm";
 import InteractiveParticleNetwork from "./components/interactive-particle-network";
-import LinkedInPostCard from "./components/LinkedinPostCard";
-import { Logo } from "./components/logo";
+import { Logo } from "./components/Logo";
 import ProjectCard from "./components/ProjectCard";
 import SectionWrapper from "./components/SectionWrapper";
 import SkillItem from "./components/SkillsItem";
 import { Button } from "./components/ui/button";
 import { aboutText } from "./constants/about.constants";
-import { linkedInPostsData } from "./constants/linkedinPosts.constants";
 import { navItems } from "./constants/navLinks.constants";
 import { projectsData } from "./constants/projects.constants";
 import { skillsData } from "./constants/skills.constants";
@@ -40,7 +39,7 @@ export default function App() {
           <Logo />
           <nav className="hidden space-x-5 md:flex">
             {navItems.map((item) => (
-              <a // Alterado de Link para a
+              <a
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleScroll(e, item.href)}
@@ -69,7 +68,7 @@ export default function App() {
           <div className="md:hidden absolute top-16 left-0 w-full bg-black/95 backdrop-blur-sm border-b border-neutral-800">
             <nav className="flex flex-col px-4 py-3">
               {navItems.map((item) => (
-                <a // Alterado de Link para a
+                <a
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleScroll(e, item.href)}
@@ -84,14 +83,13 @@ export default function App() {
       </header>
 
       <main className="flex-grow">
-        {/* Hero Section */}
         <section
           id="hero"
           className="h-[calc(80vh)] md:h-[calc(70vh)] flex items-center border-b border-neutral-800"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-left">
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-mono font-bold text-white leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -99,38 +97,39 @@ export default function App() {
               Anderson Medeiros<span className="text-neutral-700">.</span>
             </motion.h1>
             <motion.p
-              className="font-mono-code text-lg md:text-xl text-neutral-400 mt-3 max-w-2xl"
+              className="font-mono text-lg md:text-xl text-neutral-400 mt-3 max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               Full-Stack Developer <span className="text-neutral-700">_</span>{" "}
-              Criando software com precisão e clareza.
+              Building digital products focused on quality, innovation, and
+              simplicity.
             </motion.p>
           </div>
         </section>
 
-        <SectionWrapper id="about" title="sobre_mim">
+        <SectionWrapper id="about" title="about_me">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="max-w-3xl text-base md:text-lg leading-relaxed text-neutral-300 space-y-4 font-sans" // Garantir font-sans
+            className=" text-base md:text-lg leading-relaxed text-neutral-300 space-y-4 font-mono"
           >
             <p>{aboutText}</p>
           </motion.div>
         </SectionWrapper>
 
         {/* Skills Section */}
-        <SectionWrapper id="skills" title="habilidades_chave">
+        <SectionWrapper id="skills" title="key_skills">
           <div className="space-y-8">
             {skillsData.map((skillCategory) => (
               <div key={skillCategory.category}>
                 <h3 className="font-mono-code text-sm uppercase tracking-wider text-neutral-500 mb-4">
                   {skillCategory.category}
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex cursor-pointer flex-wrap gap-2">
                   {skillCategory.items.map((skill) => (
                     <SkillItem
                       key={skill.name}
@@ -144,70 +143,52 @@ export default function App() {
           </div>
         </SectionWrapper>
 
-        <SectionWrapper id="projects" title="projetos_selecionados">
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <SectionWrapper id="projects" title="selected_projects">
+          <div className="grid cursor-pointer sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projectsData.map((project, i) => (
               <ProjectCard comingSoon {...project} key={project.title + i} />
             ))}
           </div>
         </SectionWrapper>
 
-        <SectionWrapper id="linkedin-posts" title="ultimos_posts">
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {linkedInPostsData.map((post) => (
-              <LinkedInPostCard key={post.id} post={post} />
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <a
-              href="https://linkedin.com/in/seu-linkedin"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono-code text-sm text-neutral-400 hover:text-white hover:underline inline-flex items-center group"
-            >
-              Ver todos os posts no LinkedIn
-              <ExternalLink className="ml-1.5 h-3.5 w-3.5 text-neutral-500 group-hover:text-white transition-colors" />
-            </a>
+        <SectionWrapper id="education" title="education">
+          <div className="space-y-4 text-base md:text-lg leading-relaxed text-neutral-300 font-sans">
+            <div>
+              <h3 className="font-mono-code text-sm uppercase tracking-wider text-neutral-500 mb-1">
+                Graduation
+              </h3>
+              <p>Technologist in Systems Analysis and Development</p>
+              <p className="text-neutral-400 text-sm">
+                University of Southern Santa Catarina (UNISUL) — 2023 - 2025
+              </p>
+            </div>
           </div>
         </SectionWrapper>
 
-        <SectionWrapper
-          id="contact"
-          title="entre_em_contato"
-          className="border-b-0"
-        >
+        <SectionWrapper id="contact" title="contact" className="border-b-0">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="max-w-xl"
+            className="w-full"
           >
             <p className="text-lg text-neutral-300 mb-6 font-sans">
               {" "}
-              Pronto para discutir seu próximo projeto ou oportunidade? Adoraria
-              ouvir de você.
+              Ready to discuss your next project or opportunity? I'd love to
+              hear from you.
             </p>
-            <a
-              href="mailto:anderson.medeiros.dev@example.com" // SUBSTITUA
-              className="inline-block font-mono-code text-lg text-white bg-neutral-800 hover:bg-neutral-700 px-6 py-3 rounded-sm transition-colors duration-200 group"
-            >
-              enviar_email
-              <span className="text-neutral-500 group-hover:text-neutral-400 transition-colors">
-                ()
-              </span>
-              ;
-            </a>
-            <p className="text-sm text-neutral-500 mt-6 font-sans">
+            <ContactForm />
+            <p className="text-sm flex items-center gap-2 text-neutral-500 mt-6 font-sans">
               {" "}
-              Ou me encontre no{" "}
+              Or find me on{" "}
               <a
-                href="https://linkedin.com/in/seu-linkedin"
+                href="https://www.linkedin.com/in/anderson-medeiros-dev/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-white underline"
+                className="text-neutral-400 flex gap-2 items-center hover:text-white underline"
               >
-                LinkedIn
+                LinkedIn <Linkedin size={20} />
               </a>
               .
             </p>
@@ -220,7 +201,7 @@ export default function App() {
           <Logo className="justify-center flex mb-3" />
           <p className="font-mono-code text-xs text-neutral-600">
             &copy; {new Date().getFullYear()} Anderson Medeiros{" "}
-            <span className="text-neutral-700">|</span> Design & Código.
+            <span className="text-neutral-700">|</span> Design & Code.
           </p>
         </div>
       </footer>
