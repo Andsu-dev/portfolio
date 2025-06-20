@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Menu, X } from "lucide-react";
+import { FolderGit2, Github, Linkedin, Menu, X } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
 import ContactForm from "./components/ContactForm";
@@ -106,6 +106,39 @@ export default function App() {
               Building digital products focused on quality, innovation, and
               simplicity.
             </motion.p>
+
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <Button
+                className="font-mono bg-white/10 text-white px-6 py-3 text-base hover:bg-white/20 transition"
+                onClick={() => {
+                  const el = document.getElementById("projects");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                <FolderGit2 size={20} />
+                See Projects
+              </Button>
+              <Button>
+                <a
+                  href="https://www.linkedin.com/in/anderson-medeiros-dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 font-mono text-white px-6 py-3 rounded-sm transition"
+                >
+                  <Linkedin size={20} /> LinkedIn
+                </a>
+              </Button>
+              <Button>
+                <a
+                  href="https://github.com/Andsu-dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 font-mono  text-white px-6 py-3 rounded-sm transition"
+                >
+                  <Github size={20} /> GitHub
+                </a>
+              </Button>
+            </div>
           </div>
         </section>
 
