@@ -35,12 +35,10 @@ export default function App() {
 
   return (
     <div
-      className={`flex flex-col min-h-screen selection:bg-primary selection:text-primary-foreground ${
-        theme === "dark" ? "bg-black text-white" : "bg-white text-black"
-      }`}
+      className={`flex flex-col min-h-screen selection:bg-primary selection:text-primary-foreground`}
     >
       <div
-        className={`fixed inset-0 -z-20 h-full w-full bg-dot-pattern bg-dots-sm ${
+        className={`fixed inset-0 -z-30 h-full w-full bg-dot-pattern bg-dots-sm ${
           theme === "dark" ? "bg-black" : "bg-white"
         }`}
       ></div>
