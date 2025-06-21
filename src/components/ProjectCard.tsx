@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { useTheme } from "../contexts/ThemeContext";
 
 type ProjectProps = {
@@ -25,11 +26,12 @@ const ProjectCard = ({
 
   return (
     <motion.div
-      className={`rounded-md p-6 group transition-colors duration-300 flex flex-col relative overflow-hidden ${
+      className={cn(
+        "rounded-md p-6 group transition-colors duration-300 flex flex-col relative overflow-hidden",
         theme === "dark"
           ? "bg-neutral-900 border border-neutral-800 hover:border-neutral-600"
-          : "bg-white border border-neutral-200 hover:border-neutral-400"
-      }`}
+          : "bg-white border border-neutral-200 hover:border-neutral-400",
+      )}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -37,9 +39,10 @@ const ProjectCard = ({
     >
       {imageUrl && (
         <div
-          className={`relative w-full h-40 mb-4 rounded-sm overflow-hidden border ${
-            theme === "dark" ? "border-neutral-700" : "border-neutral-300"
-          }`}
+          className={cn(
+            "relative w-full h-40 mb-4 rounded-sm overflow-hidden border",
+            theme === "dark" ? "border-neutral-700" : "border-neutral-300",
+          )}
         >
           <img
             src={imageUrl || "/placeholder.svg"}
@@ -49,16 +52,18 @@ const ProjectCard = ({
         </div>
       )}
       <h3
-        className={`text-lg font-semibold mb-1 group-hover:text-neutral-100 ${
-          theme === "dark" ? "text-white" : "text-black"
-        }`}
+        className={cn(
+          "text-lg font-semibold mb-1 group-hover:text-neutral-100",
+          theme === "dark" ? "text-white" : "text-black",
+        )}
       >
         {title}
       </h3>
       <p
-        className={`text-sm mb-4 flex-grow min-h-[40px] ${
-          theme === "dark" ? "text-neutral-400" : "text-neutral-600"
-        }`}
+        className={cn(
+          "text-sm mb-4 flex-grow min-h-[40px]",
+          theme === "dark" ? "text-neutral-400" : "text-neutral-600",
+        )}
       >
         {description}
       </p>
@@ -66,31 +71,34 @@ const ProjectCard = ({
         {tags.map((tag) => (
           <span
             key={tag}
-            className={`px-2 py-0.5 text-xs rounded-full border ${
+            className={cn(
+              "px-2 py-0.5 text-xs rounded-full border",
               theme === "dark"
                 ? "bg-neutral-800 text-neutral-400 border-neutral-700"
-                : "bg-neutral-100 text-neutral-600 border-neutral-300"
-            }`}
+                : "bg-neutral-100 text-neutral-600 border-neutral-300",
+            )}
           >
             {tag}
           </span>
         ))}
       </div>
       <div
-        className={`flex space-x-3 mt-auto pt-3 border-t ${
-          theme === "dark" ? "border-neutral-800" : "border-neutral-200"
-        }`}
+        className={cn(
+          "flex space-x-3 mt-auto pt-3 border-t",
+          theme === "dark" ? "border-neutral-800" : "border-neutral-200",
+        )}
       >
         {liveUrl && !comingSoon && (
           <a
             href={liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={`text-xs hover:underline flex items-center ${
+            className={cn(
+              "text-xs hover:underline flex items-center",
               theme === "dark"
                 ? "text-neutral-400 hover:text-white"
-                : "text-neutral-600 hover:text-black"
-            }`}
+                : "text-neutral-600 hover:text-black",
+            )}
           >
             Ver Demo <ExternalLink className="ml-1 h-3 w-3" />
           </a>
@@ -100,11 +108,12 @@ const ProjectCard = ({
             href={repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={`text-xs hover:underline flex items-center ${
+            className={cn(
+              "text-xs hover:underline flex items-center",
               theme === "dark"
                 ? "text-neutral-400 hover:text-white"
-                : "text-neutral-600 hover:text-black"
-            }`}
+                : "text-neutral-600 hover:text-black",
+            )}
           >
             Repositório <ExternalLink className="ml-1 h-3 w-3" />
           </a>
@@ -112,21 +121,24 @@ const ProjectCard = ({
       </div>
       {comingSoon && (
         <div
-          className={`absolute w-full inset-0 flex items-center justify-center backdrop-blur-[4px] z-10 ${
-            theme === "dark" ? "bg-black/60" : "bg-white/60"
-          }`}
+          className={cn(
+            "absolute w-full inset-0 flex items-center justify-center backdrop-blur-[4px] z-10",
+            theme === "dark" ? "bg-black/60" : "bg-white/60",
+          )}
         >
           <div
-            className={`border rounded-lg px-10 py-3 text-center shadow-lg ${
+            className={cn(
+              "border rounded-lg px-10 py-3 text-center shadow-lg",
               theme === "dark"
                 ? "bg-white border-neutral-700"
-                : "bg-white border-neutral-300"
-            }`}
+                : "bg-white border-neutral-300",
+            )}
           >
             <span
-              className={`text-lg font-bold ${
-                theme === "dark" ? "text-black" : "text-black"
-              }`}
+              className={cn(
+                "text-lg font-bold",
+                theme === "dark" ? "text-black" : "text-black",
+              )}
             >
               Coming Soon
             </span>
