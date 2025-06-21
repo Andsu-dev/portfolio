@@ -16,7 +16,7 @@ export const skillsData: { category: string; items: Skill[] }[] = [
   {
     category: "Frontend & UX/UI",
     items: [
-      { name: "React / Next/ Vite" },
+      { name: "React / Next / Vite" },
       { name: "Vue" },
       { name: "JavaScript" },
       { name: "HTML5 / CSS3" },
