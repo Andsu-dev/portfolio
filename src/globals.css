@@ -1,41 +1,66 @@
 @import "tailwindcss";
 
 :root {
-  --black: #000000;
-  --neutral-900: #111111;
-  --neutral-800: #1c1c1c;
-  --neutral-700: #2d2d2d;
-  --neutral-600: #3e3e3e;
-  --neutral-500: #555555;
-  --neutral-400: #888888;
-  --neutral-300: #cccccc;
-  --white: #ffffff;
-
-  --background: var(--black);
-  --foreground: var(--neutral-300);
-
-  --card: var(--neutral-900);
-  --card-foreground: var(--neutral-300);
-
-  --popover: var(--black);
-  --popover-foreground: var(--neutral-300);
-
-  --primary: var(--white);
-  --primary-foreground: var(--black);
-
-  --secondary: var(--neutral-800);
-  --secondary-foreground: var(--neutral-300);
-
-  --muted: var(--neutral-700);
-  --muted-foreground: var(--neutral-400);
-
-  --accent: var(--white);
-  --accent-foreground: var(--black);
-
-  --border: var(--neutral-800);
-  --input: var(--neutral-700);
-  --ring: var(--neutral-400);
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #111111;
+  --card-foreground: #ffffff;
+  --popover: #000000;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+  --secondary: #1c1c1c;
+  --secondary-foreground: #ffffff;
+  --muted: #2d2d2d;
+  --muted-foreground: #888888;
+  --accent: #ffffff;
+  --accent-foreground: #000000;
+  --border: #1c1c1c;
+  --input: #2d2d2d;
+  --ring: #888888;
   --radius: 0.25rem;
+}
+
+/* Tema claro */
+.light {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --card: #f8f9fa;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f3f4;
+  --secondary-foreground: #1a1a1a;
+  --muted: #e9ecef;
+  --muted-foreground: #6c757d;
+  --accent: #000000;
+  --accent-foreground: #ffffff;
+  --border: #e9ecef;
+  --input: #e9ecef;
+  --ring: #6c757d;
+}
+
+/* Tema escuro */
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #111111;
+  --card-foreground: #ffffff;
+  --popover: #000000;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+  --secondary: #1c1c1c;
+  --secondary-foreground: #ffffff;
+  --muted: #2d2d2d;
+  --muted-foreground: #888888;
+  --accent: #ffffff;
+  --accent-foreground: #000000;
+  --border: #1c1c1c;
+  --input: #2d2d2d;
+  --ring: #888888;
 }
 
 .text-balance {
