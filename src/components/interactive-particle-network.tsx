@@ -2,6 +2,7 @@
 
 import type React from "react";
 import { useCallback, useEffect, useRef } from "react";
+import { useTheme } from "../contexts/ThemeContext";
 
 interface Particle {
   x: number;
@@ -20,24 +21,23 @@ const InteractiveParticleNetwork: React.FC = () => {
     x: null,
     y: null,
   });
+  const { theme } = useTheme();
 
-  const particleColor = "rgba(255, 255, 255, 0.3)";
-  const lineColor = "rgba(255, 255, 255, 0.08)";
   const interactionRadius = 150;
   const connectDistance = 100;
 
   const createParticles = useCallback((canvas: HTMLCanvasElement) => {
     particlesArray.current = [];
     const numberOfParticles = Math.floor(
-      (canvas.width * canvas.height) / 15000,
+      (canvas.width * canvas.height) / 20000,
     );
     for (let i = 0; i < numberOfParticles; i++) {
-      const radius = Math.random() * 1 + 0.5;
+      const radius = Math.random() * 2 + 1;
       particlesArray.current.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
         radius: radius,
         originalRadius: radius,
       });
@@ -47,9 +47,20 @@ const InteractiveParticleNetwork: React.FC = () => {
   const animateParticles = useCallback(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx) return;
+    if (!canvas || !ctx) {
+      return;
+    }
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const currentParticleColor =
+      theme === "dark"
+        ? "rgba(255, 255, 255, 0.8)"
+        : "rgba(100, 100, 100, 0.8)";
+    const currentLineColor =
+      theme === "dark"
+        ? "rgba(255, 255, 255, 0.2)"
+        : "rgba(100, 100, 100, 0.2)";
 
     particlesArray.current.forEach((p) => {
       if (
@@ -80,7 +91,7 @@ const InteractiveParticleNetwork: React.FC = () => {
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = particleColor;
+      ctx.fillStyle = currentParticleColor;
       ctx.fill();
     });
 
@@ -96,15 +107,15 @@ const InteractiveParticleNetwork: React.FC = () => {
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = lineColor;
-          ctx.lineWidth = 0.3;
+          ctx.strokeStyle = currentLineColor;
+          ctx.lineWidth = 0.5;
           ctx.stroke();
         }
       }
     }
 
     animationFrameId.current = requestAnimationFrame(animateParticles);
-  }, []);
+  }, [theme]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -144,7 +155,7 @@ const InteractiveParticleNetwork: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"
+      className="fixed top-0 left-0 w-full h-full opacity-40 -z-10 pointer-events-none"
     />
   );
 };
